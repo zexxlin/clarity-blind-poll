@@ -34,13 +34,13 @@ async function query(client, { method, args = [] }) {
   });
   const receipt = await client.submitQuery(query);
   if (receipt.success) {
-    return receipt;
+    return receipt.result;
   } else {
     return null;
   }
 }
 
-const submitTx = async (client, { method, args = [], sender }) => {
+async function submitTx(client, { method, args = [], sender }) {
   const tx = client.createTransaction({
     method: {
       name: method,
@@ -56,6 +56,6 @@ const submitTx = async (client, { method, args = [], sender }) => {
     const errCode = extractErrorCode(receipt.error.commandOutput);
     throw new Error(errCode || receipt.error);
   }
-};
+}
 
 export { unwrapPlainTuple, query, submitTx };
