@@ -1,11 +1,11 @@
 {
-  "name": "blind-poll",
+  "name": "clarity-blind-poll",
   "version": "1.0.0",
   "author": {
     "name": "Zexin Lin",
     "email": "zexx.lin@gmail.com"
   },
-  "repository": "https://github.com/zexxlin/blind-poll.git",
+  "repository": "https://github.com/zexxlin/clarity-blind-poll",
   "private": true,
   "engines": {
     "node": ">=10"
