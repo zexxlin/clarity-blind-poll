@@ -133,7 +133,7 @@ sequenceDiagram
 
 There're two test suites included in the test script, one for normal poll hosting workflow, the other for exceptional cases.
 
-![test-result](http://qay561y0o.bkt.clouddn.com/test-result.png){:height="60%" width="60%"}
+<img width="60%" src="http://qay561y0o.bkt.clouddn.com/test-result.png" />
 
 ## Examples
 
