@@ -1,12 +1,14 @@
-# Blind Poll
+# Blind Poll - Anonymous Poll Hosting
 
 Smart contract written in [Clarity](https://docs.blockstack.org/core/smart/clarityref) for [BlockStack](<(https://docs.blockstack.org)>).
 
 ## Introduction
 
-The Blind Poll smart contract enables users to host anonymous polls. Also, it comes with a fungible token named as BPT (Blind Poll Token). To incentivize users to participate in the poll, the poll creator could choose to put aside some amount of BPT token as rewards for each valid participation, which will get distributed when participant reveal their answers.
+The Blind Poll smart contract enables users to host anonymous polls, where all submitted answers will be sealed until they're revealed by participants after the poll is closed.
 
-Note that the total of rewards is approved by the poll creator as allowance of this contract when creating a new poll. Therefore, if the balance of the creator's principal is not sufficient when participants claim rewards, the creator won't be able to receive revealed answers, since the actions of reveal and claim are bound to a single transaction.
+Moreover, the contract comes with a fungible token named as BPT (Blind Poll Token) that serves as incentives for users to participate in the poll. Poll creators could choose to put aside some amount of BPT token as rewards for each valid participation, which will get distributed once participants reveal their answers.
+
+Note that, the total of rewards is approved by the poll creator as allowance of this contract when creating a new poll. So creators should always assure their accounts have sufficient BPT balance during the whole poll lifecycle. On the other hand, if the balance of the creator's principal is not sufficient to pay off rewards when participants reveal their answers, the creator won't be able to receive those answers, since the actions of reveal and claim are bound to a single transaction.
 
 The Poll structure defined in the contract includes the following fields:
 
@@ -18,24 +20,23 @@ The Poll structure defined in the contract includes the following fields:
 - max-count(uint): maximum of acceptable answers in total
 - questions(buff 5120): raw bytes of encoded question
 
-To be noted, how to encode/decode **questions** field of a poll and associated **answers** should be decided by dApp developers, the contract simply store them as raw bytes. Besides, **start-time** and **duration** fields are initially designed to conduct the automatic check for the poll lifecycle, but are not used for now, since **get-block-info** API does not work as expected.
+To be noted, how to encode/decode **questions** field of a poll and associated **answers** is totally up to dApp developers utilizing the contract, the contract simply store those fields as raw bytes. Besides, **start-time** and **duration** fields are initially designed to conduct automatic check for the poll lifecycle, but are not used for now since **get-block-info** API does not work as expected, about which I've post [an issue on clarity-js-sdk repo](https://github.com/blockstack/clarity-js-sdk/issues/78).
 
 ## Features / Use Cases
 
-Functionalities the contract provides include:
-
 ### As a poll creator
 
-- Create a new poll with and optionally distribute reward in BPT to participants
-- Query ID of last created poll for later interactions
-- Close the poll at any time
-- Query the total of sealed or revealed answers, and iterate over all revealed answers
+- Create a new anonymous poll with optional incentives in BPT token
+- Query the last created poll
+- Close an active poll
+- Query the total number of sealed and revealed answers
+- Collect all revealed answers to conduct further off-chain analysis
 
 ### As a poll participant
 
 - Query poll detail by ID
 - Join in an ongoing poll and submit a sealed answer for it
-- Reveal an answer submitted before and claim rewards after the poll closes
+- Reveal a sealed answer and claim rewards for it
 
 ## Sequential Diagram
 
