@@ -40,30 +40,9 @@ To be noted, how to encode/decode **questions** field of a poll and associated *
 
 ## Sequential Diagram
 
-The overall workflow of poll hosting is demonstrated in the following diagram.
+The overall workflow of poll hosting is demonstrated in the following sequential diagram.
 
-```mermaid
-sequenceDiagram
-    participant A as Poll Owner
-    participant B as Blind-Poll Contract
-    participant C as BPT-Token Contract
-    participant D as Participant
-
-
-    A ->> B: Craete a poll
-    A ->> C: Approve allowance for poll contract
-    A ->> D: Share returned poll ID
-    D ->> B: Query poll detail
-    B -->> D: Poll detail
-    D ->> B: Submit sealed answer
-    A ->> B: Query total of received answers
-    A ->> B: Close the poll
-    D ->> B: Reveal answer and claim rewards
-    B ->> C: Transfer from creator's allowance
-    C -->> D: Received BPT tokens
-    A ->> B: Collect answers
-    A ->> A: Conduct off-chain statistics
-```
+<img width="70%" src="http://qay561y0o.bkt.clouddn.com/sd.svg" />
 
 ## Error Codes
 
@@ -134,7 +113,7 @@ sequenceDiagram
 
 There're two test suites included in the test script, one for normal poll hosting workflow, the other for exceptional cases.
 
-<img width="60%" src="http://qay561y0o.bkt.clouddn.com/test-result.png" />
+<img width="70%" src="http://qay561y0o.bkt.clouddn.com/test-result.png" />
 
 ## Examples
 
