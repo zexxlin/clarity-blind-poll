@@ -4,9 +4,6 @@
 (define-constant err-answer-maximum-reached (err -1002))
 (define-constant err-inconsistent-answer-hash (err -1003))
 (define-constant err-claimed-already (err -1004))
-;; (define-constant bpt-contract-addr 'SP3GWX3NE58KXHESRYE4DYQ1S31PQJTCRXB3PE9SB.token)
-(define-constant TRUE (is-eq 1 1))
-(define-constant FALSE (is-eq 1 0))
 
 ;; === storage ===
 
@@ -127,7 +124,7 @@
 
 ;; === private functions ===
 
-;; chekc if specific poll has closed
+;; check if specific poll has closed
 (define-private (is-poll-closed (pid uint))
   (get closed (unwrap-panic (map-get? poll-closed ((poll-id pid)))))
 )
@@ -219,7 +216,7 @@
     (if (and
         (var-set pid-counter id)
         (map-set poll-owned-by ((addr tx-sender)) ((last-pid id)))
-        (map-insert poll-closed ((poll-id id)) ((closed FALSE)))
+        (map-insert poll-closed ((poll-id id)) ((closed false)))
         (map-insert answer-counter ((poll-id id)) ((count-sealed u0) (count-revealed u0)))
         (map-insert poll-detail ((poll-id id)) (
             (owner tx-sender)
@@ -246,7 +243,7 @@
 (define-public (close-poll (pid uint))
   (begin
     (panic-if-not-poll-owner pid)
-    (ok (map-set poll-closed ((poll-id pid)) ((closed TRUE))))
+    (ok (map-set poll-closed ((poll-id pid)) ((closed true))))
   )
 )
 

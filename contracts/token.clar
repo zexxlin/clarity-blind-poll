@@ -1,6 +1,5 @@
 ;; hard-coded contract-owner
 (define-constant contract-owner 'ST37X0038BZV6YV0MQCJ0G6QMZZ75QS64KA69V9D)
-(define-constant FALSE (is-eq 1 0))
 
 (define-map allowances
   ((owner principal) (spender principal))
@@ -41,7 +40,7 @@
         ((owner owner) (spender spender))
         ((allowance (+ allowance amount)))
       )
-      FALSE
+      false
     )
   )
 )
@@ -55,7 +54,7 @@
         ((owner owner) (spender spender))
         ((allowance (- allowance amount)))
       )    
-      FALSE
+      false
     )
   )
 )
