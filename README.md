@@ -1,6 +1,6 @@
 # Blind Poll - Anonymous Poll Hosting
 
-Smart contract written in [Clarity](https://docs.blockstack.org/core/smart/clarityref) for [BlockStack](<(https://docs.blockstack.org)>).
+Smart contract written in [Clarity](https://docs.blockstack.org/core/smart/clarityref) for [BlockStack](https://docs.blockstack.org).
 
 ## Introduction
 
