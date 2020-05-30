@@ -11,8 +11,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "test": "mocha",
-    "test:watch": "mocha --watch"
+    "test": "mocha 'test/unit/*.ts'"
   },
   "devDependencies": {
     "@types/node": "^10",
