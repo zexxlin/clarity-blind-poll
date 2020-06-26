@@ -46,7 +46,7 @@ Besides, the total of rewards is approved by the poll creator as allowance of th
 
 The overall workflow of poll hosting is demonstrated in the following sequential diagram.
 
-<img width="70%" src="http://qay561y0o.bkt.clouddn.com/sd.svg" />
+<img width="70%" src="./diagrams/sd.svg" alt="workflow" />
 
 ## Error Codes
 
@@ -131,7 +131,7 @@ Allow poll creators to collect revealed answers.
 
 There're two unit test suites included in the test script, one for normal poll hosting workflow, the other for exceptional cases.
 
-<img width="70%" src="http://qay561y0o.bkt.clouddn.com/test-result.png" />
+<img width="70%" src="./images/test-result.png" alt="test-result" />
 
 ## Examples
 
